@@ -1,6 +1,6 @@
-# prg-web
+# Precision Gaming Website
 
-## Project setup
+## To set up your project
 ```
 npm install
 ```
@@ -10,7 +10,7 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for production (Use if you need to deploy it)
 ```
 npm run build
 ```
