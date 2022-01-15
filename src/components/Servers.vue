@@ -7,28 +7,42 @@
                 <div v-if="!loading">
                     <v-card-title>Deagle</v-card-title>
                     <v-card-text>
-                        <v-row>
-                            <v-col>
-                                <span class="overline">Status</span><br />
-                                <v-icon large color="info">mdi-circle-small</v-icon> {{this.deagle.status}}
+                        <v-row justify="center">
+                            <v-col md="2">
+                                <v-row justify="center"><span class="overline">Status</span></v-row>
+                                <v-row justify="center"> {{this.deagle.status}}</v-row>
                             </v-col>
-                            <v-col>
-                                <span class="overline">Location</span><br />
-                                <v-icon large color="info">mdi-circle-small</v-icon> East (Virginia)
+                            <v-col md="2">
+                                <v-row justify="center"><span class="overline">Location</span></v-row>
+                                <v-row justify="center"> East (Virginia)</v-row>
                             </v-col>
-                            <v-col>
-                                <span class="overline">Current Map</span><br />
-                                <v-icon large color="info">mdi-circle-small</v-icon> {{this.deagle.map}}
+                            <v-col md="2">
+                                <v-row justify="center"><span class="overline">Current Map</span></v-row>
+                                <v-row justify="center"> {{this.deagle.map}}</v-row>
                             </v-col>
-                            <v-col>
-                                <span class="overline">Online Players</span><br />
-                                <v-icon large color="info">mdi-circle-small</v-icon> {{this.deagle.playercount}}/{{this.deagle.maxplayers}}
+                            <v-col md="2">
+                                <v-row justify="center"><span class="overline">Online Players</span></v-row>
+                                <v-row justify="center"> {{this.deagle.playercount}}/{{this.deagle.maxplayers}}</v-row>
                             </v-col>
                         </v-row>
-                        <v-sparkline :value="value" :gradient="gradient" :smooth="radius || false" :padding="padding" :line-width="width" :stroke-linecap="lineCap" :gradient-direction="gradientDirection" :fill="fill" :type="type" :auto-line-width="autoLineWidth" auto-draw height="50%"></v-sparkline>
+                        <v-row>
+                            <v-col md="2" align="center">
+                                <span class="overline">Player List</span><br />
+                                <table width=100%>
+                                    <tr v-for="player in deagle.players" :key="player">
+                                        <td style="text-align: center; padding: 7px; border-bottom: 1px solid #333">
+                                            {{player}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </v-col>
+                            <v-col>
+                                <v-sparkline :value="value" :gradient="gradient" :smooth="radius || false" :padding="padding" :line-width="width" :stroke-linecap="lineCap" :gradient-direction="gradientDirection" :fill="fill" :type="type" :auto-line-width="autoLineWidth" auto-draw height="50%"></v-sparkline>
+                            </v-col>
+                        </v-row>
                     </v-card-text>
                     <v-card-actions class="pt-0">
-                        <v-btn text color="primary" class="rounded-xl" href="steam://connect/51.81.6.196:27015" target="_blank">
+                        <v-btn block text color="primary" class="rounded-xl" href="steam://connect/51.81.6.196:27015" target="_blank">
                             Connect
                         </v-btn>
                     </v-card-actions>
@@ -65,6 +79,7 @@ export default ({
         autoLineWidth: false,
         deagle: {
             map: "",
+            players: [],
             maxplayers: "",
             playercount: "",
             status: ""
@@ -81,6 +96,9 @@ export default ({
             const self = this;
             axios.get('https://www.prgaming.net:8080/servers?server=' + name).then(resp => {
                     this.deagle.map = resp.data.map;
+                    resp.data.players.forEach(player => {
+                        this.deagle.players.push(player.name);
+                    });
                     this.deagle.maxplayers = resp.data.maxplayers;
                     this.deagle.playercount = resp.data.raw.numplayers;
                     this.deagle.status = "Online";
