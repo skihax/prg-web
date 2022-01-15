@@ -1,16 +1,23 @@
 <template>
   <div class="home">
-    <Servers msg="Welcome to Your Vue.js App"/>
+    <v-row>
+      <Info />
+    </v-row>
+    <v-row>
+      <Servers />
+    </v-row>
   </div>
 </template>
 
 <script>
 import Servers from '@/components/Servers.vue'
+import Info from '@/components/Info.vue'
 
 export default {
   name: 'Home',
   components: {
-    Servers
+    Servers,
+    Info
   }
 }
 </script>

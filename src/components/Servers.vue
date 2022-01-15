@@ -8,24 +8,6 @@
                     <v-card-title>Deagle</v-card-title>
                     <v-card-text>
                         <v-row justify="center">
-                            <v-col md="2">
-                                <v-row justify="center"><span class="overline">Status</span></v-row>
-                                <v-row justify="center"> {{this.deagle.status}}</v-row>
-                            </v-col>
-                            <v-col md="2">
-                                <v-row justify="center"><span class="overline">Location</span></v-row>
-                                <v-row justify="center"> East (Virginia)</v-row>
-                            </v-col>
-                            <v-col md="2">
-                                <v-row justify="center"><span class="overline">Current Map</span></v-row>
-                                <v-row justify="center"> {{this.deagle.map}}</v-row>
-                            </v-col>
-                            <v-col md="2">
-                                <v-row justify="center"><span class="overline">Online Players</span></v-row>
-                                <v-row justify="center"> {{this.deagle.playercount}}/{{this.deagle.maxplayers}}</v-row>
-                            </v-col>
-                        </v-row>
-                        <v-row>
                             <v-col md="2" align="center">
                                 <span class="overline">Player List</span><br />
                                 <table width=100%>
@@ -36,9 +18,24 @@
                                     </tr>
                                 </table>
                             </v-col>
-                            <v-col>
-                                <v-sparkline :value="value" :gradient="gradient" :smooth="radius || false" :padding="padding" :line-width="width" :stroke-linecap="lineCap" :gradient-direction="gradientDirection" :fill="fill" :type="type" :auto-line-width="autoLineWidth" auto-draw height="50%"></v-sparkline>
-                            </v-col>
+                            <v-row>
+                                <v-col md="2">
+                                    <v-row justify="center"><span class="overline">Status</span></v-row>
+                                    <v-row justify="center"> {{this.deagle.status}}</v-row>
+                                </v-col>
+                                <v-col md="2">
+                                    <v-row justify="center"><span class="overline">Location</span></v-row>
+                                    <v-row justify="center"> East (Virginia)</v-row>
+                                </v-col>
+                                <v-col md="2">
+                                    <v-row justify="center"><span class="overline">Current Map</span></v-row>
+                                    <v-row justify="center"> {{this.deagle.map}}</v-row>
+                                </v-col>
+                                <v-col md="2">
+                                    <v-row justify="center"><span class="overline">Online Players</span></v-row>
+                                    <v-row justify="center"> {{this.deagle.playercount}}/{{this.deagle.maxplayers}}</v-row>
+                                </v-col>
+                            </v-row>
                         </v-row>
                     </v-card-text>
                     <v-card-actions class="pt-0">

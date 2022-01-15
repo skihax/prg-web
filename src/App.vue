@@ -14,7 +14,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
         <v-btn class="mr-2 rounded-xl" text>Home</v-btn>
-        <v-btn class="mr-2 rounded-xl" text disabled>Info</v-btn>
+        <v-btn class="mr-2 rounded-xl" text href="https://stats.prgaming.net" target="_blank">Stats</v-btn>
         <v-btn class="mr-2 rounded-xl" text href="https://prgaming.net/bans" target="_blank">Bans</v-btn>
         <v-btn class="rounded-xl" text href="https://discord.gg/ftZvZ943bk" target="_blank">Discord</v-btn>
     </v-app-bar>
